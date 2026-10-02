@@ -3,13 +3,6 @@
 Finding the shortest round trip through **10 Malaysian cities** with two nature-inspired optimizers: a **Genetic Algorithm (GA)** and a **discrete Particle Swarm Optimization (PSO)**. Both are written from scratch in Python and compared over 5 runs on route length, convergence speed and consistency.
 
 **Result:** the GA found the **true optimal route (3,984.61 km)** in 3 of 5 runs, which I confirmed by brute force. PSO ran about 5× faster but was less reliable.
-
-> Individual assignment for **SAIA 1193 Computational Intelligence**, Bachelor in Artificial Intelligence, Universiti Teknologi Malaysia (2024/2025).
-
-<p align="center">
-  <img src="assets/best_route.png" alt="Optimal route through 10 Malaysian cities, 3,984.61 km" width="640">
-</p>
-
 ---
 
 ## Problem
@@ -67,10 +60,6 @@ Standard PSO moves particles through continuous space, but a TSP route is an ord
 | Mean iterations to last improvement | 293 | **171** |
 | Time per run | about 5–6 s | **about 1.2 s** |
 
-<p align="center"><img src="assets/comparison_boxplots.png" alt="Box plots of route distance, convergence iterations and run time for GA and PSO" width="900"></p>
-
-<p align="center"><img src="assets/convergence.png" alt="Best distance per iteration for one GA run and one PSO run" width="560"></p>
-
 ### Checking against the true optimum
 
 With 10 cities there are only 181,440 distinct tours, so [`verify_optimal.py`](verify_optimal.py) checks all of them:
@@ -105,22 +94,10 @@ jupyter notebook tsp_ga_vs_pso.ipynb   # run GA + PSO and the 5-run comparison
 python verify_optimal.py               # brute-force check of the true optimum
 ```
 
-## Future work
-
-- Compare at an **equal evaluation budget**, run 30+ times, and add a significance test
-- Use **great-circle distances**, or real road and flight distances, instead of flat-map distances
-- Add **2-opt local search** to both algorithms, and try a GA-PSO hybrid
-- Scale up to 50+ cities, where brute force is impossible and the differences grow
-
 ## Project structure
 
 ```
 ├── tsp_ga_vs_pso.ipynb   # GA, PSO, 5-run comparison, plots
 ├── verify_optimal.py     # brute-force check of the optimal tour
-├── requirements.txt
-└── assets/               # figures used in this README
+└── requirements.txt
 ```
-
-## Tech stack
-
-Python · NumPy · Matplotlib. Both algorithms are implemented from scratch, without optimization libraries.
